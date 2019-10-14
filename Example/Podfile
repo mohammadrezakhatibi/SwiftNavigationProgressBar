@@ -1,0 +1,6 @@
+use_frameworks!
+target 'SwiftNavigationProgressBar_Tests' do
+  pod 'SwiftNavigationProgressBar', :path => '../'
+  
+  
+end
