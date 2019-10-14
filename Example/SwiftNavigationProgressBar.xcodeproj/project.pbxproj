@@ -12,14 +12,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03653556A4D4782865AC9F95 /* SwiftNavigationProgressBar.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SwiftNavigationProgressBar.podspec; path = ../SwiftNavigationProgressBar.podspec; sourceTree = "<group>"; };
-		3851FCAB61B19B26C4B6589F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		03653556A4D4782865AC9F95 /* SwiftNavigationProgressBar.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftNavigationProgressBar.podspec; path = ../SwiftNavigationProgressBar.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3851FCAB61B19B26C4B6589F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* SwiftNavigationProgressBar_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftNavigationProgressBar_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6895958A0B8C794C81A05256 /* Pods_SwiftNavigationProgressBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNavigationProgressBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D8E14618E6F4CB140047E6 /* Pods-SwiftNavigationProgressBar_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNavigationProgressBar_Tests.release.xcconfig"; path = "Target Support Files/Pods-SwiftNavigationProgressBar_Tests/Pods-SwiftNavigationProgressBar_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D2A26A3A7FB0EEF423413BD6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		D2A26A3A7FB0EEF423413BD6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D8B466EA9C4BD08089ADBE11 /* Pods-SwiftNavigationProgressBar_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNavigationProgressBar_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftNavigationProgressBar_Tests/Pods-SwiftNavigationProgressBar_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,7 +87,6 @@
 				D8B466EA9C4BD08089ADBE11 /* Pods-SwiftNavigationProgressBar_Tests.debug.xcconfig */,
 				85D8E14618E6F4CB140047E6 /* Pods-SwiftNavigationProgressBar_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -131,10 +130,6 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
-					607FACCF1AFB9204008FA782 = {
-						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
-					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0900;
@@ -147,6 +142,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

@@ -1,0 +1,6 @@
+framework module SwiftNavigationProgressBar {
+  umbrella header "SwiftNavigationProgressBar-umbrella.h"
+
+  export *
+  module * { export * }
+}

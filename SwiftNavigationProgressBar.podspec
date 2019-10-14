@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftNavigationProgressBar'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of SwiftNavigationProgressBar.'
+  s.version          = '1.0.0'
+  s.summary          = 'Simple step by step progress bar for UINavigationController in Swift.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+ Add a simple step by step progress bar under navigation bar that user knows how many page passed or how many page remaining to end of specific flow.
                        DESC
 
   s.homepage         = 'https://github.com/mohammadrezakhatibi/SwiftNavigationProgressBar'
@@ -30,13 +30,13 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'SwiftNavigationProgressBar/Classes/**/*'
-  
+  s.source_files = 'Sources/SwiftNavigationProgressBar/**/*'
+  s.swift_versions = '5.0'
   # s.resource_bundles = {
   #   'SwiftNavigationProgressBar' => ['SwiftNavigationProgressBar/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

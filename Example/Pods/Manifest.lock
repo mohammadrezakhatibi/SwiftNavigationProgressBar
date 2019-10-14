@@ -1,0 +1,16 @@
+PODS:
+  - SwiftNavigationProgressBar (0.1.0)
+
+DEPENDENCIES:
+  - SwiftNavigationProgressBar (from `../`)
+
+EXTERNAL SOURCES:
+  SwiftNavigationProgressBar:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SwiftNavigationProgressBar: 2514b1665cec7161f1f92a23ba57d5a2e35dd445
+
+PODFILE CHECKSUM: 117dd998ce0200a6f50f3c2ac4823b92c73a2547
+
+COCOAPODS: 1.8.3
