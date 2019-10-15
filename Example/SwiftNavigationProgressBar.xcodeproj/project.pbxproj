@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		DA14AB0ADBE12B4137763F8E /* Pods_SwiftNavigationProgressBar_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6895958A0B8C794C81A05256 /* Pods_SwiftNavigationProgressBar_Tests.framework */; };
+		E466A0BC2355AFEA004E2171 /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = E466A0BB2355AFEA004E2171 /* Sources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		85D8E14618E6F4CB140047E6 /* Pods-SwiftNavigationProgressBar_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNavigationProgressBar_Tests.release.xcconfig"; path = "Target Support Files/Pods-SwiftNavigationProgressBar_Tests/Pods-SwiftNavigationProgressBar_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D2A26A3A7FB0EEF423413BD6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D8B466EA9C4BD08089ADBE11 /* Pods-SwiftNavigationProgressBar_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNavigationProgressBar_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftNavigationProgressBar_Tests/Pods-SwiftNavigationProgressBar_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		E466A0BB2355AFEA004E2171 /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sources; path = ../Sources; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				E466A0BB2355AFEA004E2171 /* Sources */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
@@ -161,6 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E466A0BC2355AFEA004E2171 /* Sources in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

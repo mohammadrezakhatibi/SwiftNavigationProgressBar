@@ -18,7 +18,9 @@ public class SwiftNavigationProgressBar: UINavigationController {
     private lazy var container                  : UIView = {
         return UIView()
     }()
-        
+
+    @IBInspectable public var showProgressBar   : Bool    = true
+    @IBInspectable public var showProgressBarOnFirstPage       : Bool    = true
     @IBInspectable public var stepCount         : Int     = 3
     @IBInspectable public var startColor        : UIColor = .blue
     @IBInspectable public var endColor          : UIColor = .green
@@ -28,23 +30,29 @@ public class SwiftNavigationProgressBar: UINavigationController {
 
     override public func viewDidLayoutSubviews() {
         
-        self.currentStep                = self.viewControllers.count
-        let stepWidth                   = ((self.view.frame.width) / CGFloat(self.stepCount))
-        
-        self.container.frame.origin.x   = 0
-        self.container.frame.origin.y   = CGFloat(self.tabBarHeight)
-        
-        UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+        if showProgressBar == true {
+            self.currentStep                = showProgressBarOnFirstPage ? self.viewControllers.count : self.viewControllers.count - 1
+            let stepWidth                   = ((self.view.frame.width) / CGFloat(self.stepCount))
             
-            self.container.frame.size.width = CGFloat(self.currentStep) * stepWidth
-            self.container.frame.size.height = self.stepBarHeight
+            self.container.frame.origin.x   = 0
+            self.container.frame.origin.y   = CGFloat(self.tabBarHeight)
             
-        }, completion: nil)
+            UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+                
+                self.container.frame.size.width = CGFloat(self.currentStep) * stepWidth
+                self.container.frame.size.height = self.stepBarHeight
+                
+            }, completion: nil)
 
-        self.addStepGradiant()
-        self.addStepSeprators()
-        
-        self.bar.addSubview(self.container)
+            self.addStepGradiant()
+            self.addStepSeprators()
+            
+            self.bar.addSubview(self.container)
+            
+        } else {
+            
+            self.container.removeFromSuperview()
+        }
         
     }
     
