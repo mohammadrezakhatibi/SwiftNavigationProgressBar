@@ -10,7 +10,7 @@
 import UIKit
 
 
-public class SwiftNavigationProgressBar: UINavigationController {
+public class SwiftNavigationProgressBar: UINavigationController, UINavigationControllerDelegate {
 
     private lazy var bar                        = self.navigationBar
     private lazy var tabBarHeight               = self.navigationBar.frame.size.height
@@ -19,7 +19,7 @@ public class SwiftNavigationProgressBar: UINavigationController {
         return UIView()
     }()
 
-    @IBInspectable public var showProgressBar   : Bool    = true
+    @IBInspectable public var showProgressBar   : Bool    = false
     @IBInspectable public var showProgressBarOnFirstPage       : Bool    = true
     @IBInspectable public var stepCount         : Int     = 3
     @IBInspectable public var startColor        : UIColor = .blue
@@ -28,10 +28,14 @@ public class SwiftNavigationProgressBar: UINavigationController {
     @IBInspectable public var stepMargin        : CGFloat = 4.0
     
 
-    override public func viewDidLayoutSubviews() {
+    override public func viewDidLoad() {
+        self.delegate = self
+    }
+    
+    public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         
-        if showProgressBar == true {
-            self.currentStep                = showProgressBarOnFirstPage ? self.viewControllers.count : self.viewControllers.count - 1
+        if self.showProgressBar == true {
+            self.currentStep                = showProgressBarOnFirstPage ? self.viewControllers.count :  self.viewControllers.count - 1
             let stepWidth                   = ((self.view.frame.width) / CGFloat(self.stepCount))
             
             self.container.frame.origin.x   = 0
@@ -46,14 +50,17 @@ public class SwiftNavigationProgressBar: UINavigationController {
 
             self.addStepGradiant()
             self.addStepSeprators()
-            
+
             self.bar.addSubview(self.container)
             
-        } else {
-            
+        }
+    }
+    
+    public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        
+        if self.showProgressBar == false {
             self.container.removeFromSuperview()
         }
-        
     }
     
     // Add Gradinat to container view

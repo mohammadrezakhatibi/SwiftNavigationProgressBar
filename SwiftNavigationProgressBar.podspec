@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftNavigationProgressBar'
-  s.version          = '1.0.0'
+  s.version          = '1.0.2'
   s.summary          = 'Simple step by step progress bar for UINavigationController in Swift.'
 
 # This description is used to generate tags and improve search results.
