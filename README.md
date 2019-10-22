@@ -22,7 +22,7 @@ pod 'SwiftNavigationProgressBar'
 
 ## Author
 
-mohammadrezakhatibi, mohammadrezakhatibi@outlook.com
+MohammadReza Khatibi, mohammadrezakhatibi@outlook.com
 
 ## License
 
