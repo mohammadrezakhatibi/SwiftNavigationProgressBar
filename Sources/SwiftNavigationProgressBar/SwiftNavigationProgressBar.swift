@@ -15,6 +15,7 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
     private lazy var bar                                    = self.navigationBar
     private lazy var tabBarHeight                           = self.navigationBar.frame.size.height
     private var currentStep                                 : Int!
+    private var mainContainer                               = UIView()
     private var container                                   = UIView()
 
     @IBInspectable public var showProgressBar               : Bool    = false
@@ -25,53 +26,61 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
     @IBInspectable public var stepBarHeight                 : CGFloat = 3.0
     @IBInspectable public var stepMargin                    : CGFloat = 4.0
     @IBInspectable public var sepratorColor                 : UIColor = .clear
+    @IBInspectable public var backgroundColor               : UIColor = .clear
     
 
     override public func viewDidLoad() {
-        self.delegate = self
+        delegate = self
     }
     
     public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         
-        if self.showProgressBar == true {
-            self.currentStep                = showProgressBarOnFirstPage ? self.viewControllers.count :  self.viewControllers.count - 1
-            let stepWidth                   = ((self.view.frame.width) / CGFloat(self.stepCount))
+        if showProgressBar == true {
+            currentStep                     = showProgressBarOnFirstPage ? viewControllers.count :  viewControllers.count - 1
+            let stepWidth                   = ((view.frame.width) / CGFloat(stepCount))
             
-            self.container.frame.origin.x   = 0
-            self.container.frame.origin.y   = CGFloat(self.tabBarHeight)
+            container.frame.origin.x        = 0
+            container.frame.origin.y        = 0
             
-            UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
                 
+                guard let self = self else { return }
                 self.container.frame.size.width = CGFloat(self.currentStep) * stepWidth
                 self.container.frame.size.height = self.stepBarHeight
                 
             }, completion: nil)
 
-            self.addStepGradiant()
-            self.addStepSeprators()
+            
+            addStepGradiant()
+            addStepSeprators()
+            
 
-            self.bar.addSubview(self.container)
+            mainContainer.frame = CGRect(x: 0, y: tabBarHeight, width: view.frame.width, height: stepBarHeight)
+            mainContainer.addSubview(container)
+            mainContainer.backgroundColor = backgroundColor
+            
+            bar.addSubview(mainContainer)
             
         }
     }
     
     public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         
-        if self.showProgressBar == false {
-            self.container.removeFromSuperview()
+        if showProgressBar == false {
+            container.removeFromSuperview()
         }
     }
     
     // Add Gradinat to container view
     private func addStepGradiant() {
         
-        self.container.clipsToBounds    = true
+        container.clipsToBounds    = true
         
         let graindiant                  = CAGradientLayer()
-        graindiant.frame                = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.container.frame.height)
+        graindiant.frame                = CGRect(x: 0, y: 0, width: view.frame.width, height: container.frame.height)
         graindiant.startPoint           = CGPoint(x: 0, y: 0)
         graindiant.endPoint             = CGPoint(x: 1, y: 0)
-        graindiant.colors               = [self.startColor.cgColor, self.endColor.cgColor]
+        graindiant.colors               = [startColor.cgColor, endColor.cgColor]
         
         self.container.layer.insertSublayer(graindiant, at: 0)
     }
@@ -85,11 +94,10 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
             sepratorView.backgroundColor    = sepratorColor
             
             if i != 0 {
-                sepratorView.frame = CGRect(x: CGFloat(i) * stepWidth, y: 0, width: self.stepMargin, height: self.stepBarHeight)
+                sepratorView.frame = CGRect(x: CGFloat(i) * stepWidth, y: 0, width: stepMargin, height: stepBarHeight)
             }
-            self.container.addSubview(sepratorView)
+            mainContainer.addSubview(sepratorView)
         }
     }
     
 }
-
