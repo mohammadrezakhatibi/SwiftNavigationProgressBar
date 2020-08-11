@@ -56,7 +56,7 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
             
 
             mainContainer.frame = CGRect(x: 0, y: tabBarHeight, width: view.frame.width, height: stepBarHeight)
-            mainContainer.addSubview(container)
+            mainContainer.insertSubview(container, at: 0)
             mainContainer.backgroundColor = backgroundColor
             
             bar.addSubview(mainContainer)
@@ -88,15 +88,15 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
     // Add Seprator
     private func addStepSeprators() {
         
-        for i in 0...self.stepCount - 1 {
-            let stepWidth                   = self.view.frame.width / CGFloat((self.stepCount))
+        for i in 0...stepCount - 1 {
+            let stepWidth                   = view.frame.width / CGFloat((stepCount))
             let sepratorView                = UIView()
             sepratorView.backgroundColor    = sepratorColor
             
             if i != 0 {
                 sepratorView.frame = CGRect(x: CGFloat(i) * stepWidth, y: 0, width: stepMargin, height: stepBarHeight)
             }
-            mainContainer.addSubview(sepratorView)
+            mainContainer.insertSubview(sepratorView, at: 1)
         }
     }
     
