@@ -12,20 +12,19 @@ import UIKit
 
 public class SwiftNavigationProgressBar: UINavigationController, UINavigationControllerDelegate {
 
-    private lazy var bar                        = self.navigationBar
-    private lazy var tabBarHeight               = self.navigationBar.frame.size.height
-    private var currentStep                     : Int!
-    private lazy var container                  : UIView = {
-        return UIView()
-    }()
+    private lazy var bar                                    = self.navigationBar
+    private lazy var tabBarHeight                           = self.navigationBar.frame.size.height
+    private var currentStep                                 : Int!
+    private var container                                   = UIView()
 
-    @IBInspectable public var showProgressBar   : Bool    = false
-    @IBInspectable public var showProgressBarOnFirstPage       : Bool    = true
-    @IBInspectable public var stepCount         : Int     = 3
-    @IBInspectable public var startColor        : UIColor = .blue
-    @IBInspectable public var endColor          : UIColor = .green
-    @IBInspectable public var stepBarHeight     : CGFloat = 3.0
-    @IBInspectable public var stepMargin        : CGFloat = 4.0
+    @IBInspectable public var showProgressBar               : Bool    = false
+    @IBInspectable public var showProgressBarOnFirstPage    : Bool    = true
+    @IBInspectable public var stepCount                     : Int     = 0
+    @IBInspectable public var startColor                    : UIColor = .blue
+    @IBInspectable public var endColor                      : UIColor = .green
+    @IBInspectable public var stepBarHeight                 : CGFloat = 3.0
+    @IBInspectable public var stepMargin                    : CGFloat = 4.0
+    @IBInspectable public var sepratorColor                 : UIColor = .clear
     
 
     override public func viewDidLoad() {
@@ -83,7 +82,7 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
         for i in 0...self.stepCount - 1 {
             let stepWidth                   = self.view.frame.width / CGFloat((self.stepCount))
             let sepratorView                = UIView()
-            sepratorView.backgroundColor    = .white
+            sepratorView.backgroundColor    = sepratorColor
             
             if i != 0 {
                 sepratorView.frame = CGRect(x: CGFloat(i) * stepWidth, y: 0, width: self.stepMargin, height: self.stepBarHeight)
