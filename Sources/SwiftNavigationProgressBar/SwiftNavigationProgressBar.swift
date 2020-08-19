@@ -34,8 +34,6 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
     override public func viewDidLoad() {
         delegate = self
 
-        // Add steps seprators
-        addStepsSeprators()
     }
     
     public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
@@ -75,7 +73,8 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
             
             // Add Gradiant to containerView
             addStepGradiant()
-            
+            // Add steps seprators
+            addStepsSeprators()
 
             mainContainer.frame = CGRect(x: 0, y: tabBarHeight, width: view.frame.width, height: stepBarHeight)
             mainContainer.insertSubview(container, at: 0)
@@ -107,9 +106,14 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
         self.container.layer.insertSublayer(graindiant, at: 0)
     }
 
-    // Add Seprators
+    // Add Seprator
     private func addStepsSeprators() {
         
+        if mainContainer.subviews.count > 1 {
+            mainContainer.subviews[1].removeFromSuperview()
+        }
+        
+        let stepHolder = UIView()
         for i in 0...stepCount - 1 {
             let stepWidth                   = view.frame.width / CGFloat((stepCount))
             let sepratorView                = UIView()
@@ -118,8 +122,10 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
             if i != 0 {
                 sepratorView.frame = CGRect(x: CGFloat(i) * stepWidth, y: 0, width: stepMargin, height: stepBarHeight)
             }
-            mainContainer.insertSubview(sepratorView, at: 1)
+            stepHolder.addSubview(sepratorView)
         }
+        
+        mainContainer.insertSubview(stepHolder, at: 1)
     }
     
 }
