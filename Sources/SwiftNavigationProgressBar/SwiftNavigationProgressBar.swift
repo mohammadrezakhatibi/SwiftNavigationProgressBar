@@ -12,11 +12,12 @@ import UIKit
 
 public class SwiftNavigationProgressBar: UINavigationController, UINavigationControllerDelegate {
 
-    private lazy var bar                                    = self.navigationBar
-    private lazy var tabBarHeight                           = self.navigationBar.frame.size.height
+    private lazy var bar                                    = navigationBar
+    private lazy var tabBarHeight                           = navigationBar.frame.size.height
     private var currentStep                                 : Int!
     private var mainContainer                               = UIView()
     private var container                                   = UIView()
+    public var beginStepsFrom                               : Int = 0
 
     @IBInspectable public var showProgressBar               : Bool    = false
     @IBInspectable public var showProgressBarOnFirstPage    : Bool    = true
@@ -28,15 +29,36 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
     @IBInspectable public var sepratorColor                 : UIColor = .clear
     @IBInspectable public var backgroundColor               : UIColor = .clear
     
+    
 
     override public func viewDidLoad() {
         delegate = self
+
+        // Add steps seprators
+        addStepsSeprators()
     }
     
     public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         
+        beginStepsFrom = abs(beginStepsFrom)
+        
         if showProgressBar == true {
-            currentStep                     = showProgressBarOnFirstPage ? viewControllers.count :  viewControllers.count - 1
+            
+            if showProgressBarOnFirstPage {
+                if beginStepsFrom == 0 || beginStepsFrom == 1 {
+                    currentStep = viewControllers.count
+                } else {
+                    currentStep = (beginStepsFrom - 1) + viewControllers.count
+                }
+            } else {
+                if beginStepsFrom == 0 || beginStepsFrom == 1 {
+                    currentStep = viewControllers.count - 1
+                } else {
+                    currentStep = (beginStepsFrom - 1) + viewControllers.count - 1
+                }
+                
+            }
+            
             let stepWidth                   = ((view.frame.width) / CGFloat(stepCount))
             
             container.frame.origin.x        = 0
@@ -51,8 +73,8 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
             }, completion: nil)
 
             
+            // Add Gradiant to containerView
             addStepGradiant()
-            addStepSeprators()
             
 
             mainContainer.frame = CGRect(x: 0, y: tabBarHeight, width: view.frame.width, height: stepBarHeight)
@@ -85,8 +107,8 @@ public class SwiftNavigationProgressBar: UINavigationController, UINavigationCon
         self.container.layer.insertSublayer(graindiant, at: 0)
     }
 
-    // Add Seprator
-    private func addStepSeprators() {
+    // Add Seprators
+    private func addStepsSeprators() {
         
         for i in 0...stepCount - 1 {
             let stepWidth                   = view.frame.width / CGFloat((stepCount))
